@@ -3,10 +3,14 @@ import PropTypes from "prop-types";
 import "./MovieCard.scss";
 
 const MovieCard = props => {
-  const { movie } = props;
+  const { movie, setActiveMovie } = props;
 
   return (
-    <div data-testid="MovieCard" className="moviecard">
+    <div
+      data-testid="MovieCard"
+      className="moviecard"
+      onClick={() => setActiveMovie(movie)}
+    >
       <div className="moviecard_img">
         <img src={movie.poster} alt="" />
       </div>
