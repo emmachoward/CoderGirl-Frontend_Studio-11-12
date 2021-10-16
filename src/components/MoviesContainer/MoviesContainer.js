@@ -7,14 +7,6 @@ const MoviesContainer = props => {
   const { movieData } = props;
   const [activeMovie, setActiveMovie] = useState(null);
 
-  const handleModalClick = event => {
-    event.stopPropagation();
-    if (event.target.classList && event.target.classList.contains("modal")) {
-      event.target.classList.remove("modal-show");
-      setActiveMovie(null);
-    }
-  };
-
   return (
     <main className="movieContainer">
       {movieData.length !== 0
@@ -34,7 +26,7 @@ const MoviesContainer = props => {
 };
 
 MoviesContainer.propTypes = {
-  movieData: PropTypes.array,
+  movieData: PropTypes.array.isRequired,
 };
 
 export default MoviesContainer;

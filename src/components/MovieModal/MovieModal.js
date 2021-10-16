@@ -48,4 +48,9 @@ const MovieModal = props => {
   );
 };
 
+MovieModal.propTypes = {
+  movie: PropTypes.object,
+  setActiveMovie: PropTypes.func,
+};
+
 export default MovieModal;
