@@ -12,7 +12,7 @@ const MovieCard = props => {
       onClick={() => setActiveMovie(movie)}
     >
       <div className="moviecard_img">
-        <img src={movie.poster} alt="" />
+        <img src={movie.poster} alt={movie.title} />
       </div>
       <div className="moviecard_wrap">
         <div className="moviecard_content">
@@ -26,6 +26,7 @@ const MovieCard = props => {
 
 MovieCard.propTypes = {
   movie: PropTypes.object.isRequired,
+  setActiveMovie: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

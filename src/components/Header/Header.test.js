@@ -9,7 +9,7 @@ describe("Header Tests", () => {
     expect(headerTitle).toBeInTheDocument();
   });
 
-  test("Header renders sidebar and runs func on click", () => {
+  test("Header renders sidebar and runs function on click", () => {
     const setSidebarOpen = jest.fn();
     render(<Header setSidebarOpen={setSidebarOpen} />);
     const sidebarBtn = screen.getByAltText("Open Sidebar");
