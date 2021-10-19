@@ -20,6 +20,7 @@ const Sidebar = props => {
           <select
             name="genres"
             id="genre-select"
+            data-testid="genreSelect"
             onChange={handleGenreSelect}
             value={selectedGenre}
           >
