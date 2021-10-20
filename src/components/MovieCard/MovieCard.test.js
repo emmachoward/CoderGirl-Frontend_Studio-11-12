@@ -2,11 +2,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import MovieCard from "./MovieCard";
 
-const testMovie = {
+let testMovie = {
   id: 286217,
   title: "The Martian",
   year: "2015",
-  release_date: "2015-09-30",
   poster: "http://image.tmdb.org/t/p/w500/5BHuvQ6p9kfc091Z8RiFNhCwL4b.jpg",
 };
 
@@ -22,7 +21,7 @@ describe("MovieCard tests", () => {
     expect(moviePoster).toBeInTheDocument();
   });
 
-  test("When MovieCard clicked, function runs", () => {
+  test("When MovieCard is clicked, function runs", () => {
     const setActiveMovie = jest.fn();
     render(<MovieCard movie={testMovie} setActiveMovie={setActiveMovie} />);
     const card = screen.getByTestId("MovieCard");
