@@ -17,13 +17,13 @@ While you can complete this studio just with the Udemy video and the instruction
   - [`userEvent` Supported Events](https://testing-library.com/docs/ecosystem-user-event)
   - [All options for queries ("get by ...")](https://testing-library.com/docs/queries/about)
 
-## Part 1 - `<Header>` Unit Tests
+## Part 1 - `Header` Unit Tests
 For Part 1, I will provide step-by-step instructions for writing the two unit tests that test the Header component.  
 In the file tree, find `Header.test.js` under `src/components/Header`. Inside there will be one basic test.
 
 ### A. Testing Title Text
 - [ ] Create a new test named `'Header renders "Movie Library" as title'`. This will test if the text 'Movie Library' is rendered by the header component. In this test, you will do the following:
-    - [ ] Render `<Header>` with the `render()` method provided by `@testing-library/react`. Remember in Studio 11, you added prop types to every component. `<Header>` has one prop, `setSidebarOpen`, so that will need to be added as well. The final render method will look like this:
+    - [ ] Render `<Header>` with the `render()` method provided by `@testing-library/react`. Remember in Studio 11, you added prop types to every component. `Header` has one prop, `setSidebarOpen`, so that will need to be added as well. The final render method will look like this:
     ```javascript
     render(<Header setSidebarOpen={() => {}} />);
     ```
@@ -47,7 +47,7 @@ Putting it all together, the full test is:
 - [ ] Let's run the test to make sure it works. In your command line, run `npm run test`, then enter `a` when it prompts to run all tests. You should see 2 test suites and 2 tests pass, since there is a test in `App.test.js` as well. The testing scripts will re-run every time you save. If you don't want this, enter `q` into your command line.
 
 ### B. Testing Sidebar Button
-There are two pieces to the `<Header>` component: the title text, and the button that opens and closes the sidebar. The test for the title text was simple because it was just checking that static text appears as expected. For this test, we want to confirm the button exists AND when clicked, it runs as expected. 
+There are two pieces to the `Header` component: the title text, and the button that opens and closes the sidebar. The test for the title text was simple because it was just checking that static text appears as expected. For this test, we want to confirm the button exists AND when clicked, it runs as expected. 
 - [ ] Create a new test named `'Header renders sidebar and runs function on click'`. Inside the function, do the following:
     - [ ] The first thing you need to do is create a **mock function** for `setSidebarOpen()`. Remember that all the tests in this file are _unit_ tests and only test one particular component. Since `setSidebarOpen()` is actually a function that lives in `App`, we don't need to worry if it works in this test. We just need to test that this function runs when the user clicks the button. To create a mock, create a new variable with the same name as the function you are mocking, and assign it to `jest.fn()`. The final line will look like this:
     ```javascript
@@ -73,9 +73,9 @@ Altogether, the full test looks like this:
 ```
 - [ ] Once again, confirm your tests are working. This might have been done automatically, or you will have to re-run `npm run test a`. You should see 3 tests passed.
 
-## Part 2 - `<MovieCard />` Tests
-The tests for the MovieCard component are similar to the Header component. You'll need a test to confirm it's rendering data as expected, and another test to confirm a function runs when something is clicked. Because they're so similar, this part will be more hands-off. Use what you learned in the previous part to write MovieCard tests.
-Note that I've provided a test movie object at the top of the file. This object is simplified from the full movie object since it only includes what MovieCard uses. In more robust applications with hundreds of tests, you will likely hold your test data in another file. You'll see that later in MovieContainer.
+## Part 2 - `MovieCard` Tests
+The tests for the `MovieCard` component are similar to the `Header` component. You'll need a test to confirm it's rendering data as expected, and another test to confirm a function runs when something is clicked. Because they're so similar, this part will be more hands-off. Use what you learned in the previous part to write `MovieCard` tests.
+Navigate to `MovieCard.test.js` located in the `MovieCard` directory. Note that I've provided a test movie object at the top of the file. This object is simplified from the full movie object since it only includes what MovieCard uses. In more robust applications with hundreds of tests, you will likely hold your test data in another file. You'll see that later in MovieContainer.
 
 ### A. Rendered Text & Image
 - [ ] Create a new test called "MovieCard renders title, year & image". Inside the test, render `<MovieCard />`, passing in `testMovie` as the `movie` prop and an empty function as `setActiveMovie`
@@ -89,9 +89,10 @@ Note that I've provided a test movie object at the top of the file. This object 
 - [ ] Use `userEvent` to simulate a click on the movie card.
 - [ ] Finally, assert that `setActiveMovie` should have been called.
 
-## Part 3 - `<Sidebar />` Tests
-The sidebar is a little more complex because it includes a `<select>` element that needs to be tested. Additionally, sidebar relies on state that lives in `<App />`. For this studio, we are not going to write end-to-end tests, so we won't be testing the user flow of a user selecting a genre and the movies cards rendered updating (you are encouraged to do this as a bonus mission, however!). Instead, we're going to test that the `<select>` element updates as expected when the user selects a genre.
-- [ ] First, create a new test called 'Sidebar renders "Filter Movies"' and test whether the sidebar title 'Filter Movies' is rendered. Remember that `<Sidebar />` has 3 props that it requires. These test values have been provided to you at the top of the file.
+## Part 3 - `Sidebar` Tests
+The sidebar is a little more complex because it includes a `<select>` element that needs to be tested. Additionally, sidebar relies on state that lives in `App`. For this studio, we are not going to write end-to-end tests, so we won't be testing the user flow of a user selecting a genre and the movies cards rendered updating (you are encouraged to do this as a bonus mission, however!). Instead, we're going to test that the `<select>` element updates as expected when the user selects a genre.
+Navigate to `Sidebar.test.js` located in the `Sidebar` directory.
+- [ ] First, create a new test called 'Sidebar renders "Filter Movies"' and test whether the sidebar title 'Filter Movies' is rendered. Remember that `Sidebar` has 3 props that it requires. These test values have been provided to you at the top of the file.
 - [ ] Create a new test called "Sidebar renders select, user can select a genre". Inside the test, render the `<Sidebar />` component with its 3 props.
 - [ ] Next, capture the `<select>` element using the query `getByTestId`. The test ID is "genreSelect". Assert that the select is in the document.
 These final two steps are tricky due to you simulating a change to a `<select>` element. When you encounter an event you're not sure how to test, check out the docs referenced at the top of the file. For this test, you'll use the `userEvent.selectOptions()` method, documented [here](https://testing-library.com/docs/ecosystem-user-event#selectoptionselement-values-options).
@@ -126,3 +127,23 @@ These final two steps are tricky due to you simulating a change to a `<select>` 
   ```
   
 </details>
+
+## Part 4 - `MovieContainer` Integration Tests
+Testing some components will inherently integration tests if the component always renders another component. In the case of `MovieContainer`, it will always render `MovieCard` components, so tests for `MovieContainer` will also be testing `MovieCard`.
+
+### A. Rendering `MovieCard`s
+Navigate to `MovieContainer.test.js` located in the `MovieContainer` directory. Note that instead of test data being added to the top of the file, it's being imported in from `src/data/dataForTests.js`. Navigate to this file and check out the three movie objects in the array. This will be the test data you're passing into `MovieContainer`.
+- [ ] Create a test called "MovieContainer renders MovieCards". In this test, render `<MovieContainer />` and pass the `testMovies` array as the `movieData` prop. 
+- [ ] Write three separate `expect()` statements asserting that the 3 movie titles in the `testMovies` array exist in the document
+- [ ] Run your tests. When everything is passing, you can move on.
+
+### B. Testing the modal display
+- [ ] Create a test called "When MovieCard is clicked, MovieModal appears". In this test, render `<MovieContainer />` and pass the `testMovies` array as the `movieData` prop.
+- [ ] Using a query (such as `screen.getByText()`), capture one of the `MovieCard` components.
+- [ ] Simulate a click event on this `MovieCard`.
+- [ ] Finally, assert that the test movie's **description** should be in the document. I know the `MovieModal` wasn't ready in the previous studio, but if you check out `MovieModal.js`, you'll see that it renders a lot of more data, include the movie's description. It's important to check that data that only exists in the modal, not the `MovieCard` as well, is in the document. Another way to test the modal is in the document is by testing the element with the test id "MovieDetailCard" is in the document.
+
+## Bonus Missions
+1. Write tests for `MovieModal` that checks the expected data renders on screen.
+2. Write a test in `MovieContainer` that simulates a user clicking on a card, revealing the modal, then clicking off the modal to close it.
+3. Write an end-to-end test in `App`. Use a mock function that mocks the fetch to get data, passing in the `testMovies` array instead. Then render `App`. Check that the 3 `MovieCards` are rendered. Trigger the sidebar to open by simulating a click on the header. Simulate an `selectOptions` event to select a genre. Simulate an event to close the sidebar. Finally, assert that only movies that include the selected genre are rendered.
