@@ -30,7 +30,7 @@ const App = () => {
 
   useEffect(() => {
     fetch(
-      `https://getpantry.cloud/apiv1/pantry/${process.env.REACT_APP_PANTRY_ID}/basket/movies`
+      `https://getpantry.cloud/apiv1/pantry/5daec432-c358-442e-bbac-be944968a126/basket/movies`
     )
       .then(response => response.json())
       .then(result => {
