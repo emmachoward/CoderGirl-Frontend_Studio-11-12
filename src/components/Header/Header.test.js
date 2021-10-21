@@ -7,3 +7,17 @@ describe("Header Tests", () => {
     expect(1).toEqual(1);
   });
 });
+
+test('Header renders "Movie Library" as title', () => {
+  render(<Header setSidebarOpen={() => {}} />);
+  const headerTitle = screen.getByText("Movie Library");
+  expect(headerTitle).toBeInTheDocument();
+});
+
+test("Header renders sidebar and runs function on click", () => {
+  const setSidebarOpen = jest.fn();
+  render(<Header setSidebarOpen={setSidebarOpen} />);
+  const sidebarBtn = screen.getByAltText("Open Sidebar");
+  userEvent.click(sidebarBtn);
+  expect(setSidebarOpen).toHaveBeenCalled();
+});
